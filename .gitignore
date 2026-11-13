@@ -1,0 +1,20 @@
+# .NET
+bin/
+obj/
+*.user
+.vs/
+TestResults/
+
+# Node / Slidev
+node_modules/
+slides/dist/
+.slidev/
+
+# Build output
+dist/
+article/dist-preview/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/

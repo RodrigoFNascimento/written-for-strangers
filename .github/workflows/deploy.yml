@@ -1,0 +1,65 @@
+name: deploy
+
+# Manual-only while the repo is private: GitHub Pages isn't available on private repos
+# with a free plan, so automatic runs would just fail. When the repo goes public
+# (phase 6), replace this block with:
+#
+#   on:
+#     push:
+#       branches: [main]
+#     workflow_dispatch:
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Test examples
+        run: dotnet test examples/Examples.slnx
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Article first: it writes dist/ from scratch (root redirect, en/, pt-br/, assets/).
+      - name: Build article
+        working-directory: article
+        run: node build.mjs --out ../dist
+
+      # The repo root is an npm workspace, so Slidev may import code from examples/.
+      - name: Install
+        run: if [ -f package-lock.json ]; then npm ci; else npm install; fi
+
+      - name: Build slides
+        working-directory: slides
+        run: npx slidev build --base /${{ github.event.repository.name }}/slides/ --out ../dist/slides
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

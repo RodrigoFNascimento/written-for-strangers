@@ -1,0 +1,9 @@
+{
+  "name": "open-source-software",
+  "private": true,
+  "workspaces": ["slides"],
+  "scripts": {
+    "slides": "npm run dev -w slides",
+    "article": "npm run preview --prefix article"
+  }
+}

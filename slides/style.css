@@ -1,0 +1,101 @@
+/* Same look as the reveal.js demo, in light and dark */
+
+:root {
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface-2: #eef1f7;
+  --border: #dde2ec;
+  --text: #141a26;
+  --muted: #5b6577;
+  --accent: #3d5bd9;
+  --accent-2: #0d8f6f;
+  --radius: 14px;
+  /* colour of the area around the slide (the "black bars") */
+  --slidev-slide-container-background: var(--bg);
+}
+
+html.dark {
+  --bg: #0f1218;
+  --surface: #171c26;
+  --surface-2: #1d2433;
+  --border: #262e3e;
+  --text: #e8ecf3;
+  --muted: #9aa6bb;
+  --accent: #7c9cff;
+  --accent-2: #5ee6c1;
+}
+
+.slidev-layout {
+  background: var(--bg);
+  color: var(--text);
+  padding: 3rem 4rem;
+  font-size: 1.15rem;
+}
+
+.slidev-layout h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.slidev-layout h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0 0 0.6rem;
+}
+
+.slidev-layout ul { margin: 0; padding-left: 1.2em; }
+.slidev-layout li { margin: 0.35em 0; line-height: 1.4; }
+.slidev-layout em { color: var(--accent-2); font-style: normal; }
+
+/* inline code */
+.slidev-layout :not(pre) > code {
+  background: var(--surface-2);
+  color: var(--accent);
+  padding: 0.05em 0.35em;
+  border-radius: 6px;
+}
+
+/* Title & closing slides */
+.title-slide { display: flex; flex-direction: column; justify-content: center; gap: 0.8rem; }
+.title-slide h1 { font-size: 3.6rem; margin: 0; }
+.accent { color: var(--accent); }
+.eyebrow {
+  color: var(--accent-2);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0 0 0.6rem;
+}
+.lead { color: var(--muted); font-size: 1.4rem; margin: 0; }
+.lead.big { font-size: 1.9rem; color: var(--text); line-height: 1.4; }
+.byline { color: var(--muted); font-size: 0.9rem; margin: 0; }
+
+/* Two columns */
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.3rem;
+}
+.card-accent { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+.card-accent h3 { color: var(--accent); }
+
+/* Code blocks */
+:root {
+  --slidev-code-font-size: 15px;
+  --slidev-code-line-height: 1.6;
+  --slidev-code-padding: 1rem 1.25rem;
+  --slidev-code-radius: var(--radius);
+}
+.slidev-layout pre.slidev-code,
+.slidev-layout .slidev-code {
+  background: var(--surface) !important;
+  border: 1px solid var(--border);
+  border-radius: var(--radius) !important;
+}
