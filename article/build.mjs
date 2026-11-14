@@ -60,9 +60,9 @@ function renderSnippets(html, page) {
   });
 }
 
+// The slug is the repo's npm package name (talk/ notes are local only, so CI can't read them).
 function slug() {
-  const brief = join(here, '..', 'talk', 'brief.md');
-  return readFileSync(brief, 'utf8').match(/^slug:\s*(\S+)/m)?.[1] ?? 'talk';
+  return JSON.parse(readFileSync(join(here, '..', 'package.json'), 'utf8')).name;
 }
 
 rmSync(out, { recursive: true, force: true });

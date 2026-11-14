@@ -34,7 +34,6 @@ Requires the [.NET SDK](https://dotnet.microsoft.com/download) 10 or later.
 examples/   working .NET code shown in the talk, with tests
 slides/     Slidev deck (pt-BR). From the repo root: `npm install`, then `npm run slides`
 article/    the article (EN + pt-BR). From the repo root: `npm run article`
-talk/       how this talk was prepared: brief and speaker script
 ```
 
 ## References
