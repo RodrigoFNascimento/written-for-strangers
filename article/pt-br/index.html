@@ -38,13 +38,13 @@
   <!-- content:start -->
   <h2>O spike</h2>
   <p>Você pega um ticket pequeno. A mudança parece simples, mas cai num projeto que o seu time herdou. O time que criou aquilo não existe mais. Quem escreveu o código já saiu da empresa. Não tem documentação nenhuma, e o código é difícil de ler.</p>
-  <p>Então, antes da tarefa de verdade, a sprint ganha um <strong>spike</strong>: um tempo reservado só pra entender como aquilo funciona.</p>
-  <p>Quase todo dev já passou por esse spike. A pergunta mais interessante é o que acontece quando ele termina. Pra onde vai tudo o que você aprendeu? Pra sua cabeça. Pra uma mensagem no chat. Quase sempre, pra lugar nenhum. A próxima pessoa que mexer naquele projeto vai pagar pelo mesmo spike de novo.</p>
+  <p>Então, antes da tarefa de verdade, a sprint ganha um <strong>spike</strong>: um tempo reservado só para entender como aquilo funciona.</p>
+  <p>Quase todo desenvolvedor já passou por esse spike. A pergunta mais interessante é o que acontece quando ele termina. Para onde vai tudo o que você aprendeu? Para a sua cabeça. Para uma mensagem no chat. Quase sempre, para lugar nenhum. A próxima pessoa que mexer naquele projeto vai pagar pelo mesmo spike de novo.</p>
   <p>Projetos open source vivem essa situação todo santo dia. Mantenedores vão embora. Quem contribui é estranho, está em outro país, em outro fuso, muitas vezes escrevendo numa língua que não é a sua. Ninguém pode ir até a mesa do autor e perguntar. E, mesmo assim, tem projeto que roda há décadas.</p>
   <p>Então como um projeto sobrevive quando <em>todo mundo</em> é um estranho?</p>
 
   <h2>Como estranhos constroem software juntos</h2>
-  <p>Uma palavra faz muito trabalho neste artigo: <strong>contribuidor</strong>, qualquer pessoa que altera o projeto. Guarde essa palavra; mais pra frente ela vai incluir alguém que não é uma pessoa.</p>
+  <p>Uma palavra faz muito trabalho neste artigo: <strong>contribuidor</strong>, qualquer pessoa que altera o projeto. Guarde essa palavra; mais para frente ela vai incluir alguém que não é uma pessoa.</p>
   <ul>
     <li><strong>Usuários</strong> usam o projeto.</li>
     <li><strong>Contribuidores</strong> alteram o projeto.</li>
@@ -62,8 +62,8 @@ flowchart TB
   <ul>
     <li><strong>Issue:</strong> alguém descreve um problema ou uma ideia.</li>
     <li><strong>Discussão:</strong> as pessoas combinam o que fazer, <em>antes</em> de alguém escrever código.</li>
-    <li><strong>Pull request:</strong> uma proposta. "Esta é a minha mudança, por favor puxe ela pra dentro."</li>
-    <li><strong>Checks automáticos:</strong> a mudança é compilada e testada <em>antes</em> de qualquer pessoa olhar pra ela.</li>
+    <li><strong>Pull request:</strong> uma proposta. "Esta é a minha mudança, por favor puxe ela para dentro."</li>
+    <li><strong>Checks automáticos:</strong> a mudança é compilada e testada <em>antes</em> de qualquer pessoa olhar para ela.</li>
     <li><strong>Review:</strong> um mantenedor lê, faz perguntas e pede ajustes.</li>
     <li><strong>Merge:</strong> a mudança entra na branch principal.</li>
     <li><strong>Release:</strong> uma nova versão chega a quem usa.</li>
@@ -77,19 +77,19 @@ flowchart TB
   <p>Os exemplos abaixo vêm de um pequeno <a href="https://github.com/RodrigoFNascimento/open-source-software/tree/main/examples/01-model-repo">repositório modelo</a>: um encurtador de URLs em .NET, com pouquíssimo código de propósito e tudo o que um contribuidor precisa em volta dele. Os arquivos dele estão em inglês, como costuma ser no open source.</p>
 
   <h3>README</h3>
-  <p>O que é, por que existe e como rodar. Um bom teste: <em>um estagiário consegue rodar o projeto no primeiro dia só com o README?</em> No repositório modelo são dois comandos, sem banco, sem segredo e sem serviço pra subir:</p>
+  <p>O que é, por que existe e como rodar. Um bom teste: <em>um estagiário consegue rodar o projeto no primeiro dia só com o README?</em> No repositório modelo são dois comandos, sem banco, sem segredo e sem serviço para subir:</p>
 <!-- snippet: 01-model-repo/README.md#quick-start markdown -->
 
   <h3>CONTRIBUTING</h3>
-  <p>Como a gente trabalha aqui: como criar a branch, como rodar os testes, como é um bom pull request, onde tirar dúvida. O GitHub mostra o link pra ele automaticamente quando alguém abre uma issue ou um pull request. O runtime do .NET coloca ali uma das suas regras mais importantes:</p>
+  <p>Como a gente trabalha aqui: como criar a branch, como rodar os testes, como é um bom pull request, onde tirar dúvida. O GitHub mostra o link para ele automaticamente quando alguém abre uma issue ou um pull request. O runtime do .NET coloca ali uma das suas regras mais importantes:</p>
   <blockquote class="quote">
     <p><strong>DON'T</strong> surprise us with big pull requests. Instead, file an issue and start a discussion so we can agree on a direction before you invest a large amount of time.</p>
     <cite><a href="https://github.com/dotnet/runtime/blob/main/CONTRIBUTING.md">dotnet/runtime · CONTRIBUTING.md</a></cite>
   </blockquote>
-  <p>Em outras palavras: não apareça com um pull request gigante de surpresa. Abra uma issue antes, pra todo mundo concordar com a direção antes de você investir muito tempo.</p>
+  <p>Em outras palavras: não apareça com um pull request gigante de surpresa. Abra uma issue antes, para todo mundo concordar com a direção antes de você investir muito tempo.</p>
 
   <h3>GLOSSARY</h3>
-  <p>As palavras <em>deste</em> projeto, e o que elas significam <em>aqui</em>. Sem glossário, "slug", "short code" e "target URL" querem dizer três coisas diferentes pra três pessoas diferentes, e pra cada agente de IA. O repositório modelo lista até as palavras que evita, e usa "short code" no lugar delas:</p>
+  <p>As palavras <em>deste</em> projeto, e o que elas significam <em>aqui</em>. Sem glossário, "slug", "short code" e "target URL" querem dizer três coisas diferentes para três pessoas diferentes, e para cada agente de IA. O repositório modelo lista até as palavras que evita, e usa "short code" no lugar delas:</p>
   <ul>
     <li><strong><em>slug</em></strong>: costuma ser um caminho legível, escolhido por alguém (<code>/meu-post</code>). Nossos códigos são aleatórios.</li>
     <li><strong><em>alias</em></strong>: não suportamos códigos personalizados, e "alias" dá a entender que sim.</li>
@@ -116,10 +116,10 @@ flowchart TB
   <pre class="code"><code class="language-plaintext">/src/coreclr/jit/     @dotnet/jit-contrib
 /.github/workflows/   @jeffhandley @dotnet/runtime-infrastructure</code></pre>
   <a class="code-source" href="https://github.com/dotnet/runtime/blob/main/.github/CODEOWNERS">dotnet/runtime · .github/CODEOWNERS</a>
-  <p>Guarde uma ideia pra depois: cada um desses arquivos também é lido por agentes de IA.</p>
+  <p>Guarde uma ideia para depois: cada um desses arquivos também é lido por agentes de IA.</p>
 
   <h2>A memória do projeto</h2>
-  <p>De volta ao spike. Ele nunca foi sobre <em>o que</em> o código faz; isso dá pra descobrir lendo. Ele era sobre <strong>por que</strong> o código é do jeito que é. Código não guarda o porquê. Pessoas guardam, e pessoas vão embora.</p>
+  <p>De volta ao spike. Ele nunca foi sobre <em>o que</em> o código faz; isso dá para descobrir lendo. Ele era sobre <strong>por que</strong> o código é do jeito que é. Código não guarda o porquê. Pessoas guardam, e pessoas vão embora.</p>
 
   <h3>docs/</h3>
   <p>Um arquivo por assunto: arquitetura, API, configuração, troubleshooting. Arquivo pequeno é arquivo que as pessoas encontram e atualizam. Uma página enorme na wiki é uma página em que ninguém confia.</p>
@@ -128,11 +128,11 @@ flowchart TB
   <p>Um ADR é um arquivo curto que registra uma decisão. O formato original, de Michael Nygard, tem cinco partes: <strong>Título</strong>, <strong>Status</strong>, <strong>Contexto</strong> (o problema e as forças envolvidas), <strong>Decisão</strong> e <strong>Consequências</strong> (o que fica mais fácil e o que fica mais difícil). Projetos como o <a href="https://github.com/arachne-framework/architecture">Arachne</a> mantêm os seus em público.</p>
   <p>O primeiro ADR do repositório modelo explica como os short codes são gerados:</p>
 <!-- snippet: 01-model-repo/docs/adr/0001-short-code-generation.md#decision markdown -->
-  <p>O registro completo também lista as opções que perderam (IDs sequenciais dá pra adivinhar, hashes colidem e vazam URLs, GUIDs não têm nada de "short") e as consequências. Com isso escrito, ninguém "conserta" o retry achando que é bug.</p>
-  <p>A regra mais importante: <strong>um ADR aceito nunca é editado pra mudar a decisão</strong>. Um novo ADR <em>substitui</em> o antigo. Esse rastro de decisões, com o motivo de cada uma, é exatamente o que o spike estava procurando.</p>
+  <p>O registro completo também lista as opções que perderam (IDs sequenciais dá para adivinhar, hashes colidem e vazam URLs, GUIDs não têm nada de "short") e as consequências. Com isso escrito, ninguém "conserta" o retry achando que é bug.</p>
+  <p>A regra mais importante: <strong>um ADR aceito nunca é editado para mudar a decisão</strong>. Um novo ADR <em>substitui</em> o antigo. Esse rastro de decisões, com o motivo de cada uma, é exatamente o que o spike estava procurando.</p>
 
   <h3>CHANGELOG</h3>
-  <p>O que mudou, escrito pra humanos, e não copiado das mensagens de commit. O <a href="https://keepachangelog.com/pt-BR/">Keep a Changelog</a> agrupa as entradas em Added, Changed, Fixed, Removed e Security:</p>
+  <p>O que mudou, escrito para humanos, e não copiado das mensagens de commit. O <a href="https://keepachangelog.com/pt-BR/">Keep a Changelog</a> agrupa as entradas em Added, Changed, Fixed, Removed e Security:</p>
 <!-- snippet: 01-model-repo/CHANGELOG.md#v1 markdown -->
 
   <h3>Documentação junto do código</h3>
@@ -149,7 +149,7 @@ flowchart TB
     <div class="card accent"><h3>Checks no pull request</h3><p>O problema aparece enquanto ainda é a branch de uma pessoa. Vermelho quer dizer que não dá merge.</p></div>
   </div>
   <p>Rodar os checks no pull request tem dois efeitos colaterais. O revisor nunca precisa ser o chato da formatação ou do teste quebrado, porque a máquina já disse não. E com <strong>required checks</strong> a plataforma obriga a regra, então ninguém precisa lembrar dela.</p>
-  <p>O CI do repositório modelo roda em todo pull request pra <code>main</code>:</p>
+  <p>O CI do repositório modelo roda em todo pull request para a <code>main</code>:</p>
 <!-- snippet: 01-model-repo/.github/workflows/ci.yml#triggers -->
   <p>Ele compila tratando warnings como erros (um XML doc comment faltando quebra o build), verifica a formatação e roda os testes, inclusive testes que checam a própria documentação da API. Tire um <code>[Description]</code> e o pull request fica vermelho:</p>
   <pre class="code"><code class="language-plaintext">Failed Every_contract_property_is_described
@@ -161,7 +161,7 @@ flowchart TB
   <ul>
     <li><strong>Pull requests pequenos.</strong> O pull request de 2.000 linhas de um estranho não é revisado; é ignorado.</li>
     <li><strong>Revise o código, não a pessoa.</strong> "Este método…", e não "você…".</li>
-    <li><strong>Rotule o feedback</strong>, pra quem escreveu saber o que bloqueia. O <a href="https://conventionalcomments.org/">Conventional Comments</a> faz isso com um prefixo em cada comentário:</li>
+    <li><strong>Rotule o feedback</strong>, para quem escreveu saber o que bloqueia. O <a href="https://conventionalcomments.org/">Conventional Comments</a> faz isso com um prefixo em cada comentário:</li>
   </ul>
   <pre class="code"><code class="language-plaintext">issue (blocking): this accepts javascript: URLs.
 suggestion: extract this into a method?
@@ -169,20 +169,20 @@ nitpick (non-blocking): extra blank line.</code></pre>
   <p>Os rótulos acabam com a adivinhação, principalmente entre pessoas escrevendo numa segunda língua. E quando o contribuidor é um agente de IA, é esse review que pega os erros dele.</p>
 
   <h2>Agentes de IA também são contribuidores</h2>
-  <p>É aqui que a palavra <em>contribuidor</em> mostra pra que veio: um contribuidor pode ser uma pessoa ou um agente. E um agente é o recém-chegado definitivo, com <strong>zero contexto, toda vez</strong>. Ele não lembra da conversa de ontem. Toda sessão é o primeiro dia dele.</p>
+  <p>É aqui que a palavra <em>contribuidor</em> mostra para que veio: um contribuidor pode ser uma pessoa ou um agente. E um agente é o recém-chegado definitivo, com <strong>zero contexto, toda vez</strong>. Ele não lembra da conversa de ontem. Toda sessão é o primeiro dia dele.</p>
   <p>Um agente é um estagiário com energia infinita e nenhuma memória. Então tudo o que ajuda um estranho (README, CONTRIBUTING, GLOSSARY, <code>docs/</code> e ADRs) também é contexto pro agente. Um agente que leu o ADR 0001 não vai "simplificar" o retry e jogar ele fora.</p>
 
   <h3>AGENTS.md</h3>
-  <p>O <a href="https://agents.md/">AGENTS.md</a> se descreve como "a simple, open format for guiding coding agents": um formato simples e aberto pra orientar agentes de código. Pense nele como o CONTRIBUTING dos agentes: como compilar, como testar, as convenções e o que não mexer. Arquivos específicos de cada ferramenta, como <code>.github/copilot-instructions.md</code> ou <code>CLAUDE.md</code>, só apontam pra ele, pra que as instruções não fiquem cada uma dizendo uma coisa. Os limites do repositório modelo:</p>
+  <p>O <a href="https://agents.md/">AGENTS.md</a> se descreve como "a simple, open format for guiding coding agents": um formato simples e aberto para orientar agentes de código. Pense nele como o CONTRIBUTING dos agentes: como compilar, como testar, as convenções e o que não mexer. Arquivos específicos de cada ferramenta, como <code>.github/copilot-instructions.md</code> ou <code>CLAUDE.md</code>, só apontam para ele, para que as instruções não fiquem cada uma dizendo uma coisa. Os limites do repositório modelo:</p>
 <!-- snippet: 01-model-repo/AGENTS.md#boundaries markdown -->
 
   <h3>Uma boa issue é um bom prompt</h3>
-  <p>Contexto, comportamento esperado e critérios de aceite deixam uma issue pronta pra qualquer um trabalhar nela, pessoa ou agente. O template de feature do repositório modelo pede isso explicitamente:</p>
+  <p>Contexto, comportamento esperado e critérios de aceite deixam uma issue pronta para qualquer um trabalhar nela, pessoa ou agente. O template de feature do repositório modelo pede isso explicitamente:</p>
 <!-- snippet: 01-model-repo/.github/ISSUE_TEMPLATE/feature_request.yml#acceptance -->
   <p>Os checks da seção anterior pegam os erros de um agente do mesmo jeito que pegam os nossos. Agentes abrem <em>mais</em> pull requests, então checks automáticos importam mais, e não menos.</p>
   <p>Um alerta: instruções geradas a partir do código são um ótimo começo, mas elas envelhecem. Revise essas instruções como código, e atualize no mesmo pull request da mudança que elas descrevem.</p>
 
-  <h2>Trazendo pra casa</h2>
+  <h2>Trazendo para casa</h2>
   <p>Nada disso é exclusividade do open source. Tem até nome: <strong>inner source</strong>, usar práticas de open source dentro de uma empresa, termo criado por Tim O'Reilly em 2000.</p>
   <p>De volta ao spike uma última vez. O resultado de um spike não deveria ser uma resposta na cabeça de alguém. Deveria ser um arquivo em <code>docs/</code>, um novo ADR ou uma entrada no glossário, commitado. O repositório modelo transforma isso em regra:</p>
 <!-- snippet: 01-model-repo/CONTRIBUTING.md#spikes markdown -->
@@ -195,7 +195,7 @@ nitpick (non-blocking): extra blank line.</code></pre>
     <li>Um <strong>GLOSSARY</strong>.</li>
     <li>Um <strong>AGENTS.md</strong>.</li>
   </ol>
-  <p>Não faça tudo. Comece com <strong>um arquivo</strong>, em <strong>um repositório</strong>, na próxima vez que você mexer nele. O <a href="https://github.com/RodrigoFNascimento/open-source-software/tree/main/examples/01-model-repo">repositório modelo</a> está aí pra servir de ponto de partida.</p>
+  <p>Não faça tudo. Comece com <strong>um arquivo</strong>, em <strong>um repositório</strong>, na próxima vez que você mexer nele. O <a href="https://github.com/RodrigoFNascimento/open-source-software/tree/main/examples/01-model-repo">repositório modelo</a> está aí para servir de ponto de partida.</p>
 
   <blockquote class="takeaway">Um estranho, um estagiário novo, você daqui a seis meses, um agente de IA: todo contribuidor precisa da mesma coisa, contexto escrito no repositório. Escreva para estranhos. Cedo ou tarde, todo mundo é um.</blockquote>
 
