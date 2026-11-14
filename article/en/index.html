@@ -51,20 +51,11 @@
     <li><strong>Maintainers</strong> decide what gets in.</li>
   </ul>
   <p>Contributors come and go, and the project has to keep working without them. That is why open source sends almost every change down the same path:</p>
-  <figure class="diagram">
+  <div class="diagram-beside">
+  <figure class="diagram vertical">
 <pre class="mermaid">
 flowchart TB
-    subgraph before [" "]
-        direction LR
-        I[Issue] --> D[Discussion] --> PR[Pull request] --> C[Automated checks]
-    end
-    subgraph after [" "]
-        direction LR
-        R[Review] --> M[Merge] --> Rel[Release]
-    end
-    before --> after
-    style before fill:none,stroke:none
-    style after fill:none,stroke:none
+    I[Issue] --> D[Discussion] --> PR[Pull request] --> C[Automated checks] --> R[Review] --> M[Merge] --> Rel[Release]
 </pre>
     <figcaption>The life of a change in an open-source project.</figcaption>
   </figure>
@@ -77,6 +68,7 @@ flowchart TB
     <li><strong>Merge:</strong> the change goes into the main branch.</li>
     <li><strong>Release:</strong> a new version reaches the people who use it.</li>
   </ul>
+  </div>
   <p>Every step is written and asynchronous, because it has to be. There is no hallway, no daily stand-up, no shared time zone. In open source, <strong>if it isn't written, it doesn't exist</strong>. Writing things down isn't bureaucracy there; it's the only way to talk.</p>
   <p>Teams inside a company do have a hallway, and that is exactly why they skip writing things down. Then the team moves on, and the hallway goes with it. That's how you end up with the spike.</p>
 

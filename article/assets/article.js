@@ -19,6 +19,8 @@
 
   async function renderDiagrams(theme) {
     if (!window.mermaid || !diagrams.length) return;
+    // Measure labels with the real font, or Mermaid sizes the boxes too small and clips the text.
+    if (document.fonts) await document.fonts.ready;
     for (const d of diagrams) { d.el.removeAttribute('data-processed'); d.el.textContent = d.src; }
     mermaid.initialize({ startOnLoad: false, theme: theme === 'light' ? 'default' : 'dark', fontFamily: 'Inter, sans-serif' });
     await mermaid.run({ nodes: diagrams.map(d => d.el) });

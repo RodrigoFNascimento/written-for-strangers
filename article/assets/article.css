@@ -121,3 +121,10 @@ blockquote.quote {
 }
 blockquote.quote p { margin: 0 0 0.5rem; }
 blockquote.quote cite { color: var(--muted); font-size: 0.85rem; font-style: normal; }
+
+/* A tall, narrow diagram with its explanation beside it (stacked on phones) */
+.diagram-beside { display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: center; margin: 1.5rem 0; }
+.diagram-beside figure { margin: 0; }
+.diagram-beside ul { margin: 0; }
+@media (max-width: 640px) { .diagram-beside { grid-template-columns: 1fr; } }
+figure.diagram.vertical svg { min-width: 0; }
