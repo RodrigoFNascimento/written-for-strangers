@@ -53,8 +53,18 @@
   <p>Contributors come and go, and the project has to keep working without them. That is why open source sends almost every change down the same path:</p>
   <figure class="diagram">
 <pre class="mermaid">
-flowchart LR
-    I[Issue] --> D[Discussion] --> PR[Pull request] --> C[Automated checks] --> R[Review] --> M[Merge] --> Rel[Release]
+flowchart TB
+    subgraph before [" "]
+        direction LR
+        I[Issue] --> D[Discussion] --> PR[Pull request] --> C[Automated checks]
+    end
+    subgraph after [" "]
+        direction LR
+        R[Review] --> M[Merge] --> Rel[Release]
+    end
+    before --> after
+    style before fill:none,stroke:none
+    style after fill:none,stroke:none
 </pre>
     <figcaption>The life of a change in an open-source project.</figcaption>
   </figure>
