@@ -7,10 +7,12 @@ namespace UrlShortener.Links;
 // Why: docs/adr/0002-document-the-api-with-data-annotations.md.
 
 #region contracts
+#region request
 [Description("A request to shorten a URL.")]
 internal sealed record CreateLinkRequest(
     [property: Description("The absolute http or https URL the short link redirects to.")]
     string Url);
+#endregion
 
 [Description("A link that was just created.")]
 internal sealed record LinkResponse(

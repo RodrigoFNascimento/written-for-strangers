@@ -30,7 +30,7 @@ function extract(file, region) {
   const full = join(examplesDir, file);
   if (!existsSync(full)) throw new Error(`snippet file not found: examples/${file}`);
   const lines = readFileSync(full, 'utf8').replace(/\r\n/g, '\n').split('\n');
-  if (!region) return dedent(lines).trimEnd();
+  if (!region) return dedent(lines.filter(l => !isStart(l) && !isEnd(l))).trimEnd();
   let depth = 0, start = -1;
   for (let i = 0; i < lines.length; i++) {
     const name = isStart(lines[i]);

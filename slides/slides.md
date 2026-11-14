@@ -475,27 +475,22 @@ Não é o git log. É o que mudou, pra quem usa.
 
 # Documentação junto do código
 
-<div class="cols">
-<div>
-
 ### Pra quem **lê** o código: XML docs
 
-<<< @/../examples/01-model-repo/src/UrlShortener/Links/ILinkStore.cs cs
+<<< @/../examples/01-model-repo/src/UrlShortener/Links/ILinkStore.cs#try-add cs
 
-</div>
 <div v-click>
 
 ### Pra quem **usa** a API: `[Description]`
 
-<<< @/../examples/01-model-repo/src/UrlShortener/Links/Contracts.cs#contracts cs
+<<< @/../examples/01-model-repo/src/UrlShortener/Links/Contracts.cs#request cs
 
-</div>
 </div>
 
 <!--
 Dois públicos, duas ferramentas.
-Esquerda: XML doc comments, pra quem lê e chama o código. Aparecem no hover da IDE.
-[click] Direita: [Description] nos contratos. Isso vai pro OpenAPI, pra quem consome a API.
+Em cima: XML doc comments, pra quem lê e chama o código. Aparecem no hover da IDE.
+[click] Embaixo: [Description] nos contratos. Isso vai pro OpenAPI, pra quem consome a API.
 Nos dois casos, a doc fica em cima da coisa que ela descreve, então muda no mesmo diff.
 -->
 
