@@ -18,7 +18,6 @@ class: title-slide
   :initial="{ y: 30, opacity: 0 }"
   :enter="{ y: 0, opacity: 1, transition: { delay: 150 } }"
 >
-<p class="eyebrow">Dev Growth Talks</p>
 <h1>Escrito para <span class="accent">estranhos</span></h1>
 <p class="lead">o que o open source pode ensinar ao seu time</p>
 </div>
@@ -100,7 +99,7 @@ Transição: "Então como um projeto sobrevive quando TODO MUNDO é um estranho?
 class: title-slide
 ---
 
-<p class="eyebrow">A palavra desta talk</p>
+<p class="eyebrow">A palavra de hoje</p>
 
 # Contribuidor
 
@@ -141,13 +140,13 @@ Decidem o que entra.
 </div>
 </div>
 
-<p v-click class="lead">A maioria contribui uma ou duas vezes… e vai embora.<br>O projeto precisa estar pronto pra isso.</p>
+<p v-click class="lead">Contribuidores chegam e vão embora.<br>O projeto precisa continuar funcionando sem eles.</p>
 
 <!--
 [click] Usuários usam.
 [click] Contribuidores alteram.
 [click] Mantenedores decidem o que entra.
-[click] A maioria contribui uma ou duas vezes e some. O projeto tem que estar preparado pra isso.
+[click] Contribuidores chegam e vão embora. O projeto tem que continuar de pé sem eles.
 Leve: essa parte é mais pros estagiários.
 -->
 
@@ -160,19 +159,29 @@ flowchart LR
     I[Issue] --> D[Discussão] --> PR[Pull request] --> C[Checks automáticos] --> R[Review] --> M[Merge] --> Rel[Release]
 ```
 
+<div class="text-base">
 <v-clicks>
 
+- **Issue**: alguém descreve um problema ou uma ideia
+- **Discussão**: combina-se o que fazer, **antes** de escrever código
 - **Pull request**: uma proposta. "Esta é minha mudança, por favor puxe ela pra dentro."
-- A discussão acontece **antes** do código
-- Os checks rodam **antes** do review
+- **Checks automáticos**: compilam e testam, **antes** de qualquer humano olhar
+- **Review**: um mantenedor lê, pergunta e pede ajustes
+- **Merge**: a mudança entra na branch principal
+- **Release**: uma nova versão chega a quem usa
 
 </v-clicks>
+</div>
 
 <!--
-Mostra o fluxo inteiro rapidinho, no máximo um minuto no diagrama.
-[click] Explica pull request pros estagiários: uma proposta de mudança.
-[click] Repara na ordem: discute antes de escrever código.
-[click] E a máquina checa antes de um humano revisar.
+Mostra o fluxo inteiro rapidinho, no máximo um minuto no diagrama. Um clique por etapa, na ordem do diagrama.
+[click] Issue: alguém descreve um problema ou uma ideia.
+[click] Discussão: combina o que fazer antes de escrever código.
+[click] Pull request, pros estagiários: uma proposta de mudança.
+[click] Checks automáticos: a máquina checa antes de um humano revisar.
+[click] Review: o mantenedor lê e pede ajustes.
+[click] Merge: entra na main.
+[click] Release: chega em quem usa.
 -->
 
 ---
@@ -213,24 +222,35 @@ A partir daqui: os arquivos que um recém-chegado lê primeiro. Mostra os trecho
 
 <p class="lead">O teste: um estagiário consegue rodar o projeto no primeiro dia <em>só com o README</em>?</p>
 
-<v-clicks>
+<div class="cols mt-6">
+<div class="card">
 
-- O que é, por que existe
-- Como rodar, em poucos comandos
+### O README do repo modelo
 
-</v-clicks>
+- **O que é:** uma API que encurta URLs
+- **Quick start:** como rodar
+- **Where to go next:** "quero fazer X → leia Y"
+- **Project layout:** onde fica cada coisa
 
+</div>
 <div v-click>
 
-<<< @/../examples/01-model-repo/README.md#quick-start md
+### Quick start: dois comandos
 
+```bash
+dotnet test
+dotnet run --project src/UrlShortener
+```
+
+Sem banco, sem segredo, sem serviço pra subir.
+
+</div>
 </div>
 
 <!--
 Começa pela pergunta-teste.
-[click] O que é e por que existe.
-[click] Como rodar em poucos comandos.
-[click] No repo modelo: dois comandos. Sem banco, sem segredo, sem serviço pra subir.
+Esquerda: as seções do README do repo modelo. O que é, como rodar, pra onde ir depois, onde fica cada coisa.
+[click] O quick start: dois comandos. Sem banco, sem segredo, sem serviço pra subir.
 -->
 
 ---
@@ -284,12 +304,12 @@ No repo modelo, o glossário tem até uma tabela de palavras que a gente NÃO us
 
 # Templates de issue e PR
 
-<p class="lead">Fazem as perguntas certas logo no começo.</p>
+<p class="lead">Um formulário que já vem preenchido com as perguntas certas.</p>
 
-<div class="cols">
+<div class="cols mt-4">
 <div class="card">
 
-### Bug report do dotnet/runtime
+### Issue: bug report do dotnet/runtime
 
 - Description
 - Reproduction Steps
@@ -298,18 +318,24 @@ No repo modelo, o glossário tem até uma tabela de palavras que a gente NÃO us
 - Regression? · Known Workarounds · Configuration
 
 </div>
-<div v-click class="card card-accent">
+<div v-click class="card">
 
-### A gente já tem template de PR
+### Pull request: o template do repo modelo
 
-É a mesma ideia.<br>O open source só aplica ela às **issues** também.
+- What and why
+- How to test
+- Checklist: testes, docs, CHANGELOG, ADR
 
 </div>
 </div>
+
+<p v-click class="lead mt-4">Ninguém precisa lembrar o que perguntar. O formulário lembra.</p>
 
 <!--
-Os campos reais do template de bug do .NET runtime: descrição, passos pra reproduzir, esperado, atual…
-[click] Nós já usamos template de PR em todo projeto. É exatamente essa ideia, só que aplicada também às issues.
+Template é o texto que o GitHub coloca automaticamente quando alguém abre uma issue ou um PR.
+Esquerda: os campos reais do template de bug do .NET runtime. Descrição, passos pra reproduzir, esperado, atual… Quem reporta já responde o que o mantenedor ia perguntar.
+[click] Direita: o mesmo pro pull request. O que mudou e por quê, como testar, e um checklist: testes, docs, CHANGELOG, ADR.
+[click] Ninguém precisa lembrar o que perguntar.
 -->
 
 ---
@@ -335,7 +361,7 @@ O PR chama as pessoas certas **sozinho**. Ninguém precisa saber quem marcar.
 <!--
 Trecho real do CODEOWNERS do .NET runtime.
 [click] O PR pede review das pessoas certas automaticamente.
-[click] Callback: todos esses arquivos também são lidos por agentes. Guarda essa ideia.
+[click] Gancho: todos esses arquivos também são lidos por agentes. Guarda essa ideia.
 Transição: "Esses arquivos dizem como trabalhar HOJE. Mas e as decisões de quem já foi embora?"
 -->
 
@@ -606,7 +632,7 @@ Agora que a máquina cuida da parte chata, o review humano foca no que importa.
 [click] Revise o código, não a pessoa.
 [click] Rotule o feedback.
 [click] Exemplos: o rótulo diz se bloqueia ou não. Tira a adivinhação, principalmente entre idiomas diferentes.
-[click] Callback pros agentes. Transição: "Vamos falar do contribuidor mais novo de todo time."
+[click] Gancho pros agentes. Transição: "Vamos falar do contribuidor mais novo de todo time."
 -->
 
 ---
@@ -620,7 +646,7 @@ class: title-slide
 <p class="lead big">O recém-chegado definitivo: <em>zero contexto, toda vez</em>.</p>
 
 <!--
-Payoff da palavra: contribuidor pode ser pessoa ou agente.
+A promessa do começo: contribuidor pode ser pessoa ou agente.
 O agente não lembra da conversa de ontem. Toda sessão é o primeiro dia dele.
 -->
 
@@ -654,22 +680,9 @@ A simple, open format for guiding coding agents
 <cite>agents.md</cite>
 </blockquote>
 
-<div class="cols">
-<div>
-
 <<< @/../examples/01-model-repo/AGENTS.md#boundaries md
 
-</div>
-<div v-click class="card">
-
-### O CONTRIBUTING dos agentes
-
-Como compilar, como testar, convenções, o que não mexer.
-
-Arquivos específicos de ferramenta (`.github/copilot-instructions.md`, `CLAUDE.md`…) só **apontam** pra ele.
-
-</div>
-</div>
+<p v-click class="lead mt-4"><strong>O CONTRIBUTING dos agentes:</strong> como compilar, como testar, convenções, o que não mexer.<br>Arquivos de cada ferramenta (<code>copilot-instructions.md</code>, <code>CLAUDE.md</code>…) só <em>apontam</em> pra ele.</p>
 
 <!--
 AGENTS.md: um formato aberto que vários agentes de código leem.
@@ -812,6 +825,6 @@ class: title-slide
 </div>
 
 <!--
-Abre a discussão. Essa pergunta é a ponte entre a talk e uma decisão do time.
+Abre a discussão. Essa pergunta é a ponte entre a apresentação e uma decisão do time.
 O repo modelo serve de ponto de partida.
 -->
