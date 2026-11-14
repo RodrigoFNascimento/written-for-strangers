@@ -1,5 +1,5 @@
 {
-  "name": "open-source-software",
+  "name": "written-for-strangers",
   "private": true,
   "workspaces": ["slides"],
   "scripts": {

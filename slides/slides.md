@@ -819,8 +819,8 @@ class: title-slide
 
 <div class="mt-6">
 
-**Artigo:** rodrigofnascimento.github.io/open-source-software<br>
-**Repositório:** github.com/RodrigoFNascimento/open-source-software
+**Artigo:** rodrigofnascimento.github.io/written-for-strangers<br>
+**Repositório:** github.com/RodrigoFNascimento/written-for-strangers
 
 </div>
 

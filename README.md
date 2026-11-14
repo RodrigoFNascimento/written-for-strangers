@@ -2,8 +2,8 @@
 
 <!-- One-paragraph summary: the talk's takeaway, written for someone who never saw it. -->
 
-**Read the article:** [English](https://rodrigofnascimento.github.io/open-source-software/en/) · [Português (BR)](https://rodrigofnascimento.github.io/open-source-software/pt-br/)
-**Slides (pt-BR):** [rodrigofnascimento.github.io/open-source-software/slides](https://rodrigofnascimento.github.io/open-source-software/slides/)
+**Read the article:** [English](https://rodrigofnascimento.github.io/written-for-strangers/en/) · [Português (BR)](https://rodrigofnascimento.github.io/written-for-strangers/pt-br/)
+**Slides (pt-BR):** [rodrigofnascimento.github.io/written-for-strangers/slides](https://rodrigofnascimento.github.io/written-for-strangers/slides/)
 
 ## Examples
 
