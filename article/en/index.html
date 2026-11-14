@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Written for Strangers: what open source can teach your team · Rodrigo Nascimento</title>
-  <meta name="description" content="TODO: one-sentence summary of the talk.">
+  <meta name="description" content="Open-source projects survive with contributors who are strangers. The files and habits that make that work, and how any team and its AI agents can use them.">
   <link rel="alternate" hreflang="en" href="../en/">
   <link rel="alternate" hreflang="pt-BR" href="../pt-br/">
 
@@ -26,17 +26,189 @@
 
 <main>
   <header class="hero">
-    <h1>Written for Strangers: what open source can teach your team</h1>
-    <p class="lead">TODO: the takeaway in one sentence.</p>
+    <h1>Written for <span class="accent">Strangers</span>: what open source can teach your team</h1>
+    <p class="lead">Every contributor, whether a stranger, a new intern, you in six months or an AI agent, needs the same thing: context, written down in the repository.</p>
     <div class="meta">
       <a class="btn" href="../slides/">▶ Slides (pt-BR)</a>
       <a class="btn ghost" href="https://github.com/RodrigoFNascimento/open-source-software">Code</a>
-      <span>· Nov 2026 · X min read</span>
+      <span>· Nov 2026 · 9 min read</span>
     </div>
   </header>
 
   <!-- content:start -->
-  <p>TODO: the article. See .claude/skills/talk/phases/5-article.md.</p>
+  <h2>The spike</h2>
+  <p>You pick up a small ticket. The change itself looks easy, but it lands on a project your team inherited. The team that built it no longer exists. The people who wrote it have left the company. There is no documentation, and the code is hard to read.</p>
+  <p>So before the real task, the sprint gets a <strong>spike</strong>: time set aside just to understand how the thing works.</p>
+  <p>Most developers have been on that spike. The more interesting question is what happens when it ends. Where does everything you learned go? Into your head. Into a chat message. Usually, nowhere. The next person to touch that project pays for the same spike again.</p>
+  <p>Open-source projects live this situation every single day. Maintainers leave. Contributors are strangers, in other countries and other time zones, often writing in a second language. Nobody can walk over to the author's desk and ask. And yet some of these projects have been running for decades.</p>
+  <p>So how does a project survive when <em>everyone</em> is a stranger?</p>
+
+  <h2>How strangers build software together</h2>
+  <p>One word does a lot of work in this article: <strong>contributor</strong>, anyone who changes the project. Keep it in mind; later it will include someone who isn't a person.</p>
+  <ul>
+    <li><strong>Users</strong> use the project.</li>
+    <li><strong>Contributors</strong> change it.</li>
+    <li><strong>Maintainers</strong> decide what gets in.</li>
+  </ul>
+  <p>Contributors come and go, and the project has to keep working without them. That is why open source sends almost every change down the same path:</p>
+  <figure class="diagram">
+<pre class="mermaid">
+flowchart LR
+    I[Issue] --> D[Discussion] --> PR[Pull request] --> C[Automated checks] --> R[Review] --> M[Merge] --> Rel[Release]
+</pre>
+    <figcaption>The life of a change in an open-source project.</figcaption>
+  </figure>
+  <ul>
+    <li><strong>Issue:</strong> someone describes a problem or an idea.</li>
+    <li><strong>Discussion:</strong> people agree on what to do, <em>before</em> anyone writes code.</li>
+    <li><strong>Pull request:</strong> a proposal. "Here is my change, please pull it in."</li>
+    <li><strong>Automated checks:</strong> the change is built and tested <em>before</em> any human looks at it.</li>
+    <li><strong>Review:</strong> a maintainer reads it, asks questions and requests changes.</li>
+    <li><strong>Merge:</strong> the change goes into the main branch.</li>
+    <li><strong>Release:</strong> a new version reaches the people who use it.</li>
+  </ul>
+  <p>Every step is written and asynchronous, because it has to be. There is no hallway, no daily stand-up, no shared time zone. In open source, <strong>if it isn't written, it doesn't exist</strong>. Writing things down isn't bureaucracy there; it's the only way to talk.</p>
+  <p>Teams inside a company do have a hallway, and that is exactly why they skip writing things down. Then the team moves on, and the hallway goes with it. That's how you end up with the spike.</p>
+
+  <h2>The front door</h2>
+  <p>A stranger shows up wanting to help. What do they see first? A good repository answers their questions <em>before</em> they ask, with a handful of files in predictable places.</p>
+  <p>The examples below come from a small <a href="https://github.com/RodrigoFNascimento/open-source-software/tree/main/examples/01-model-repo">model repository</a>: a URL shortener written in .NET, with deliberately little code and everything a contributor needs around it.</p>
+
+  <h3>README</h3>
+  <p>What this is, why it exists, and how to run it. A useful test: <em>could a new intern run the project on day one with only the README?</em> In the model repository it takes two commands, with no database, secrets or services to set up:</p>
+<!-- snippet: 01-model-repo/README.md#quick-start markdown -->
+
+  <h3>CONTRIBUTING</h3>
+  <p>How we work here: how to branch, how to run the tests, what a good pull request looks like, where to ask. GitHub links to it automatically when someone opens an issue or a pull request. The .NET runtime puts one of its most important rules right there:</p>
+  <blockquote class="quote">
+    <p><strong>DON'T</strong> surprise us with big pull requests. Instead, file an issue and start a discussion so we can agree on a direction before you invest a large amount of time.</p>
+    <cite><a href="https://github.com/dotnet/runtime/blob/main/CONTRIBUTING.md">dotnet/runtime · CONTRIBUTING.md</a></cite>
+  </blockquote>
+
+  <h3>GLOSSARY</h3>
+  <p>The words <em>this</em> project uses, and what they mean <em>here</em>. Without one, "slug", "short code" and "target URL" mean three different things to three different people, and to every AI agent. The model repository even lists the words it avoids, and says "short code" instead:</p>
+  <ul>
+    <li><strong><em>slug</em></strong>: usually means a readable, human-chosen path (<code>/my-blog-post</code>). Our codes are random.</li>
+    <li><strong><em>alias</em></strong>: we don't support custom codes, and "alias" suggests we do.</li>
+    <li><strong><em>hash</em></strong>: codes aren't derived from the URL (see ADR 0001 below).</li>
+  </ul>
+  <a class="code-source" href="https://github.com/RodrigoFNascimento/open-source-software/blob/main/examples/01-model-repo/GLOSSARY.md">01-model-repo/GLOSSARY.md</a>
+
+  <h3>Issue and pull request templates</h3>
+  <p>A template is the text GitHub fills in automatically when someone opens an issue or a pull request. It works like a form that already asks the right questions, so the person reporting a bug answers what the maintainer would have asked anyway.</p>
+  <div class="cols">
+    <div class="card">
+      <h3>Issue: dotnet/runtime's bug report</h3>
+      <ul><li>Description</li><li>Reproduction Steps</li><li>Expected behavior</li><li>Actual behavior</li><li>Regression? · Known Workarounds · Configuration</li></ul>
+    </div>
+    <div class="card">
+      <h3>Pull request: the model repository</h3>
+      <ul><li>What and why</li><li>How to test</li><li>Checklist: tests, docs, CHANGELOG, ADR</li></ul>
+    </div>
+  </div>
+  <p>Nobody has to remember what to ask. The form remembers.</p>
+
+  <h3>CODEOWNERS</h3>
+  <p>Who must review changes to which folder. The pull request requests reviews from the right people on its own, so nobody has to know who to ping. From the .NET runtime:</p>
+  <pre class="code"><code class="language-plaintext">/src/coreclr/jit/     @dotnet/jit-contrib
+/.github/workflows/   @jeffhandley @dotnet/runtime-infrastructure</code></pre>
+  <a class="code-source" href="https://github.com/dotnet/runtime/blob/main/.github/CODEOWNERS">dotnet/runtime · .github/CODEOWNERS</a>
+  <p>Hold one thought for later: every one of these files is also read by AI agents.</p>
+
+  <h2>The project's memory</h2>
+  <p>Back to the spike. It was never really about <em>what</em> the code does; you can find that out by reading it. It was about <strong>why</strong> the code is the way it is. Code doesn't keep the why. People do, and people leave.</p>
+
+  <h3>docs/</h3>
+  <p>One file per topic: architecture, the API, configuration, troubleshooting. Small files are files people actually find and update. One huge wiki page is a page nobody trusts.</p>
+
+  <h3>Architecture Decision Records</h3>
+  <p>An ADR is a short file that records one decision. Michael Nygard's original format has five parts: <strong>Title</strong>, <strong>Status</strong>, <strong>Context</strong> (the problem and the forces at play), <strong>Decision</strong>, and <strong>Consequences</strong> (what gets easier and what gets harder). Projects like <a href="https://github.com/arachne-framework/architecture">Arachne</a> keep theirs in public.</p>
+  <p>The model repository's first ADR explains how short codes are generated:</p>
+<!-- snippet: 01-model-repo/docs/adr/0001-short-code-generation.md#decision markdown -->
+  <p>The full record also lists the options that lost (sequential IDs are guessable, hashes collide and leak URLs, GUIDs aren't short) and the consequences. With that written down, nobody "fixes" the retry loop thinking it's a bug.</p>
+  <p>The most important rule: <strong>an accepted ADR is never edited to change the decision</strong>. A new ADR <em>supersedes</em> it. The trail of decisions, and the reason behind each one, is exactly what the spike was looking for.</p>
+
+  <h3>CHANGELOG</h3>
+  <p>What changed, written for humans rather than copied from commit messages. <a href="https://keepachangelog.com/">Keep a Changelog</a> groups entries under Added, Changed, Fixed, Removed and Security:</p>
+<!-- snippet: 01-model-repo/CHANGELOG.md#v1 markdown -->
+
+  <h3>Docs next to the code</h3>
+  <p>Code has two audiences, and each gets its own tool. Whoever <em>reads and calls</em> the code gets XML doc comments, which the IDE shows on hover:</p>
+<!-- snippet: 01-model-repo/src/UrlShortener/Links/ILinkStore.cs -->
+  <p>Whoever <em>consumes</em> the API gets <code>[Description]</code> attributes on the contracts, which end up in the OpenAPI document:</p>
+<!-- snippet: 01-model-repo/src/UrlShortener/Links/Contracts.cs#contracts -->
+  <p>Either way, the documentation sits on top of the thing it describes, so it changes in the same diff. That's the rule that makes all of this work: <strong>docs in the repository are reviewed in the same pull request as the code</strong>. A wiki rots quietly. A doc in a pull request has a reviewer asking, "did you update this?"</p>
+
+  <h2>Let the machine say no</h2>
+  <p>So far, everything depends on people doing the right thing. Open source doesn't count on that, and not out of cynicism. Picture a maintainer receiving a pull request from a total stranger. Would you merge it without knowing whether it even builds?</p>
+  <div class="cols">
+    <div class="card"><h3>Checks after merge</h3><p>The problem shows up when it's already on <code>main</code> and everyone has pulled it.</p></div>
+    <div class="card accent"><h3>Checks on the pull request</h3><p>The problem shows up while it's still one person's branch. Red means it can't be merged.</p></div>
+  </div>
+  <p>Running the checks on the pull request has two side effects. The reviewer never has to be the bad guy about formatting or a failing test, because the machine already said no. And with <strong>required checks</strong>, the platform enforces the rule, so nobody has to remember it.</p>
+  <p>The model repository's CI runs on every pull request to <code>main</code>:</p>
+<!-- snippet: 01-model-repo/.github/workflows/ci.yml#triggers -->
+  <p>It builds with warnings treated as errors (a missing XML doc comment fails the build), verifies formatting, and runs the tests, including tests that check the API documentation itself. Remove a <code>[Description]</code> and the pull request turns red:</p>
+  <pre class="code"><code class="language-plaintext">Failed Every_contract_property_is_described
+  LinkResponse.shortUrl has no [Description].</code></pre>
+  <p>Documentation becomes part of "done", and the one saying no is the machine.</p>
+
+  <h3>Review culture</h3>
+  <p>With the boring part automated, human review can focus on what humans are good at:</p>
+  <ul>
+    <li><strong>Small pull requests.</strong> A stranger's 2,000-line pull request doesn't get reviewed; it gets ignored.</li>
+    <li><strong>Review the code, not the person.</strong> "This method…", not "you…".</li>
+    <li><strong>Label your feedback</strong>, so the author knows what's blocking. <a href="https://conventionalcomments.org/">Conventional Comments</a> does this with a prefix on each comment:</li>
+  </ul>
+  <pre class="code"><code class="language-plaintext">issue (blocking): this accepts javascript: URLs.
+suggestion: extract this into a method?
+nitpick (non-blocking): extra blank line.</code></pre>
+  <p>Labels remove the guessing, especially between people writing in a second language. And when the contributor is an AI agent, this review is what catches its mistakes.</p>
+
+  <h2>AI agents are contributors too</h2>
+  <p>Here is where the word <em>contributor</em> pays off: a contributor can be a person or an agent. And an agent is the ultimate newcomer, with <strong>zero context, every single time</strong>. It doesn't remember yesterday's conversation. Every session is its first day.</p>
+  <p>An agent is an intern with infinite energy and no memory. So everything that helps a stranger (the README, CONTRIBUTING, GLOSSARY, <code>docs/</code> and ADRs) is also context for the agent. An agent that has read ADR 0001 won't "simplify" the retry loop away.</p>
+
+  <h3>AGENTS.md</h3>
+  <p><a href="https://agents.md/">AGENTS.md</a> describes itself as "a simple, open format for guiding coding agents". Think of it as CONTRIBUTING for agents: how to build, how to test, conventions, and what not to touch. Tool-specific files such as <code>.github/copilot-instructions.md</code> or <code>CLAUDE.md</code> just point to it, so the instructions don't drift apart. The model repository's boundaries:</p>
+<!-- snippet: 01-model-repo/AGENTS.md#boundaries markdown -->
+
+  <h3>A good issue is a good prompt</h3>
+  <p>Context, expected behavior and acceptance criteria make an issue workable for anyone, human or agent. The model repository's feature template asks for them explicitly:</p>
+<!-- snippet: 01-model-repo/.github/ISSUE_TEMPLATE/feature_request.yml#acceptance -->
+  <p>The checks from the previous section catch an agent's mistakes the same way they catch ours. Agents open <em>more</em> pull requests, so automated checks matter more, not less.</p>
+  <p>One warning: instructions generated from the code are a great start, but they age. Review them like code, and update them in the same pull request as the change they describe.</p>
+
+  <h2>Bringing it home</h2>
+  <p>None of this is exclusive to open source. It even has a name: <strong>inner source</strong>, using open-source practices inside a company, a term coined by Tim O'Reilly in 2000.</p>
+  <p>Back to the spike one last time. The output of a spike shouldn't be an answer in someone's head. It should be a file in <code>docs/</code>, a new ADR or a glossary entry, committed. The model repository makes that a rule:</p>
+<!-- snippet: 01-model-repo/CONTRIBUTING.md#spikes markdown -->
+  <p>Where to start, roughly in order of effort:</p>
+  <ol>
+    <li>A <strong>README</strong> that gets a newcomer running.</li>
+    <li>A <strong>CONTRIBUTING</strong>: how we work here.</li>
+    <li><strong>Checks on the pull request</strong>, before merge.</li>
+    <li><strong><code>docs/</code> and ADRs</strong>, fed by your spikes.</li>
+    <li>A <strong>GLOSSARY</strong>.</li>
+    <li>An <strong>AGENTS.md</strong>.</li>
+  </ol>
+  <p>Don't do all of it. Start with <strong>one file</strong>, in <strong>one repository</strong>, the next time you touch it. The <a href="https://github.com/RodrigoFNascimento/open-source-software/tree/main/examples/01-model-repo">model repository</a> is there to copy from.</p>
+
+  <blockquote class="takeaway">A stranger, a new intern, you in six months, an AI agent: every contributor needs the same thing, context written down in the repository. Write for strangers. Sooner or later, everyone is one.</blockquote>
+
+  <h2>References</h2>
+  <ul>
+    <li>Karl Fogel, <a href="https://producingoss.com/"><em>Producing Open Source Software</em></a> (free online)</li>
+    <li>GitHub, <a href="https://opensource.guide/">Open Source Guides</a></li>
+    <li>Nadia Eghbal, <em>Working in Public: The Making and Maintenance of Open Source Software</em> (2020)</li>
+    <li><a href="https://innersourcecommons.org/">InnerSource Commons</a></li>
+    <li>Michael Nygard, <a href="https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions">Documenting Architecture Decisions</a> (2011)</li>
+    <li><a href="https://keepachangelog.com/">Keep a Changelog</a></li>
+    <li><a href="https://conventionalcomments.org/">Conventional Comments</a></li>
+    <li>Google, <a href="https://google.github.io/eng-practices/review/">Code Review Developer Guide</a></li>
+    <li><a href="https://agents.md/">AGENTS.md</a></li>
+    <li><a href="https://github.com/dotnet/runtime">dotnet/runtime</a>: the CONTRIBUTING, issue template and CODEOWNERS quoted above</li>
+  </ul>
   <!-- content:end -->
 </main>
 

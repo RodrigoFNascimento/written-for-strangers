@@ -113,3 +113,11 @@ footer {
   border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem;
   display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem;
 }
+
+/* Quotes from real projects */
+blockquote.quote {
+  margin: 1.5rem 0; padding: 1rem 1.25rem; border-left: 3px solid var(--accent);
+  background: var(--surface); border-radius: 0 var(--radius) var(--radius) 0;
+}
+blockquote.quote p { margin: 0 0 0.5rem; }
+blockquote.quote cite { color: var(--muted); font-size: 0.85rem; font-style: normal; }
