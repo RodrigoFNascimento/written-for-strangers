@@ -58,8 +58,10 @@ Run them locally first; it's faster than waiting for CI.
   - `question:` I don't understand something yet
 - The author resolves a comment thread once it's addressed; the reviewer re-approves.
 
+<!-- #region spikes -->
 ## Spikes leave a doc behind
 
 If you had to investigate how something works before you could change it, write down what
 you learned: a file in [docs/](docs/), a new ADR, or a GLOSSARY entry, in the same PR.
 Nobody should have to pay for the same investigation twice.
+<!-- #endregion -->

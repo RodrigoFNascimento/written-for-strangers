@@ -27,12 +27,14 @@ All three must succeed before you consider a task done.
 - Comments explain *why*, not *what*.
 - Tests: xUnit, one behavior per test, names like `Unknown_code_is_not_found`.
 
+<!-- #region boundaries -->
 ## Boundaries
 - Don't add NuGet packages without an issue that asks for it.
 - Don't change `.github/workflows/` or `Directory.Build.props` to make a check pass.
   Fix the code instead.
 - Keep changes small and focused on the task. Mention anything else you noticed in your
   summary instead of fixing it.
+<!-- #endregion -->
 
 ## When you finish
 Update docs in the same change (see "Making a change" in CONTRIBUTING.md), and add a line

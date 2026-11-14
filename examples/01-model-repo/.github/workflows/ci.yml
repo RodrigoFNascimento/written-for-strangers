@@ -2,9 +2,11 @@ name: CI
 
 # Runs on every pull request, BEFORE merge. Make this workflow a required check
 # (branch protection / rulesets) so a red PR can't be merged into main.
+#region triggers
 on:
   pull_request:
     branches: [main]
+#endregion
   push:
     branches: [main]
 

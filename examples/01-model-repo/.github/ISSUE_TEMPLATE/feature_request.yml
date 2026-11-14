@@ -16,11 +16,13 @@ body:
       description: What should happen instead? Include example requests and responses if you can.
     validations:
       required: true
+#region acceptance
   - type: textarea
     id: acceptance
     attributes:
       label: Acceptance criteria
       description: How will we know it's done? A clear list here makes the issue workable for anyone, human or AI agent.
+#endregion
       placeholder: |
         - [ ] ...
     validations:

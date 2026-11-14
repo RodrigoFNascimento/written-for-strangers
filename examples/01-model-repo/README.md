@@ -22,10 +22,12 @@ GET /aZ3kP9q
 You need the [.NET 10 SDK](https://dotnet.microsoft.com/download). Nothing else: links are
 stored in memory.
 
+<!-- #region quick-start -->
 ```bash
 dotnet test                              # build and run all tests
 dotnet run --project src/UrlShortener    # start the API on http://localhost:5206
 ```
+<!-- #endregion -->
 
 Then try it:
 

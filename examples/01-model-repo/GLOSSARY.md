@@ -15,8 +15,10 @@ docs or an issue, add it here in the same PR.
 
 ## Words we don't use
 
+<!-- #region words-we-dont-use -->
 | Avoid | Say instead | Why |
 |---|---|---|
 | *slug* | short code | "Slug" usually means a readable, human-chosen path (`/my-blog-post`). Our codes are random. |
 | *alias* | short code | We don't support custom codes; "alias" suggests we do. |
 | *hash* | short code | Codes aren't derived from the URL ([ADR 0001](docs/adr/0001-short-code-generation.md)). |
+<!-- #endregion -->
