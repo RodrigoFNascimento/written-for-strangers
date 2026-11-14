@@ -1,2 +1,9 @@
 <Solution>
+  <Folder Name="/01-model-repo/" />
+  <Folder Name="/01-model-repo/src/">
+    <Project Path="01-model-repo/src/UrlShortener/UrlShortener.csproj" />
+  </Folder>
+  <Folder Name="/01-model-repo/tests/">
+    <Project Path="01-model-repo/tests/UrlShortener.Tests/UrlShortener.Tests.csproj" />
+  </Folder>
 </Solution>

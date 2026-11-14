@@ -1,0 +1,31 @@
+name: CI
+
+# Runs on every pull request, BEFORE merge. Make this workflow a required check
+# (branch protection / rulesets) so a red PR can't be merged into main.
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build (warnings are errors, including missing XML docs)
+        run: dotnet build --no-restore -warnaserror
+
+      - name: Check formatting
+        run: dotnet format --no-restore --verify-no-changes
+
+      - name: Test (including API documentation tests)
+        run: dotnet test --no-build

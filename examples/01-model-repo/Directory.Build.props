@@ -1,0 +1,12 @@
+<Project>
+  <!-- Shared settings for every project in this repo. Kept here (not in a parent folder)
+       so the repo builds the same way when copied on its own. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Warnings fail the build, so the build says no instead of a reviewer. -->
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+</Project>

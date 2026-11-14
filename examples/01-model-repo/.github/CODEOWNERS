@@ -1,0 +1,8 @@
+# Code owners are asked for review automatically when a PR touches their files.
+# The last matching pattern wins.
+
+*                    @RodrigoFNascimento
+
+# Decisions and CI affect everyone: changes need a maintainer's eyes.
+/docs/adr/           @RodrigoFNascimento
+/.github/workflows/  @RodrigoFNascimento
