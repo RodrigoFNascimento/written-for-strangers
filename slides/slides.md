@@ -3,6 +3,7 @@ theme: default
 title: "Escrito para estranhos: o que o open source pode ensinar ao seu time"
 colorSchema: auto
 transition: slide-left
+routerMode: hash
 fonts:
   sans: Inter
   mono: JetBrains Mono
