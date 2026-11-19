@@ -1,14 +1,8 @@
 name: deploy
 
-# Manual-only while the repo is private: GitHub Pages isn't available on private repos
-# with a free plan, so automatic runs would just fail. When the repo goes public
-# (phase 6), replace this block with:
-#
-#   on:
-#     push:
-#       branches: [main]
-#     workflow_dispatch:
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
