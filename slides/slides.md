@@ -15,6 +15,7 @@ class: title-slide
 ---
 
 <div
+  class="flex flex-col gap-[0.8rem]"
   v-motion
   :initial="{ y: 30, opacity: 0 }"
   :enter="{ y: 0, opacity: 1, transition: { delay: 150 } }"
