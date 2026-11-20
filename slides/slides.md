@@ -331,6 +331,8 @@ No repo modelo, o glossário tem até uma tabela de palavras que a gente NÃO us
 </div>
 </div>
 
+<p class="byline">No repo modelo: .github/ISSUE_TEMPLATE/ (bug_report.yml, feature_request.yml) · .github/pull_request_template.md</p>
+
 <p v-click class="lead mt-4">Ninguém precisa lembrar o que perguntar. O formulário lembra.</p>
 
 <!--
